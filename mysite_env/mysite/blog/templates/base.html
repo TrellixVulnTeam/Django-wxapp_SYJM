@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<html>
+    <head>
+        <title>
+         {% block title %}{% endblock %}
+        </title>
+        <link rel="stylesheet" href="/static/bass.css">
+    </head>
+    <body>
+
+         <div>
+                <a href="{% url 'home' %}">
+                        <h3>个人博客网站</h3>
+                    </a>
+         </div>
+         <hr>
+         {% block content %}{% endblock %}
+    </body>
+</html>
