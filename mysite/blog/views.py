@@ -1,11 +1,17 @@
 from django.shortcuts import render_to_response,get_object_or_404
+from django.core.paginator import Paginator
 from .models import Blog,BlogType
 
 def blog_list(request):
+    
+    blogs_all_list = Blog.objects.all()
+    paginator = Paginator(blogs_all_list,10)
+    page_num = request.GET.get('page',1) #获取页码参数核心请求，无page则为1
+    page_of_blogs = paginator.get_page(page_num)
+
     context = {}
-    context['blogs'] = Blog.objects.all()
+    context['page_of_blogs'] = page_of_blogs
     context['blog_types'] = BlogType.objects.all()
-    context['blogs_count'] = Blog.objects.all().count()
     return render_to_response('blog/blog_list.html',context)
 
 # Create your views here.
