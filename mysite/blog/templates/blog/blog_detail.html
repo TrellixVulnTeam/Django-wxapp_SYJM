@@ -22,6 +22,22 @@
             </ul>
             <video width="658" height="444" src="https://media.w3.org/2010/05/sintel/trailer.mp4" poster="https://wx1.sinaimg.cn/mw690/acae16dely1fzvt67dnowj20go0f3gmd.jpg" controls="controls"></video>
             <div class="blog-content">{{blog.content}}</div>
+            <div class="blog-more">
+                <p>上一篇
+                    {%if previous_blog%}
+                    <a href=" {%url 'blog_detail' previous_blog.pk%} ">{{previous_blog.title}}</a>
+                {% else %}
+                没有了
+                {% endif %}
+                </p>
+                <p>下一篇
+                    {% if next_blog %}
+                    <a href="{% url 'blog_detail' next_blog.pk %}">{{next_blog.title}}</a>
+                    {% else %}
+                    没有了
+                    {% endif %}
+                </p>
+            </div>
         </div>
     </div>
 </div>
